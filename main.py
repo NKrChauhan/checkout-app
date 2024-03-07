@@ -27,7 +27,7 @@ def run_test_cases(cart_items_string: str, products: dict):
         cart.add_item(products.get(cart_item))
 
     checkout = Checkout(cart)
-    return checkout.calculate_total_payable()
+    return checkout.get_total_payable_amount()
 
 
 # Edit the test cases here

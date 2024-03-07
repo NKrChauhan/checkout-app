@@ -28,7 +28,7 @@ class TestCheckout(unittest.TestCase):
 
     def test_calculate_total_payable(self):
         checkout = Checkout(self.cart)
-        total_payable_amount = checkout.calculate_total_payable()
+        total_payable_amount = checkout.get_total_payable_amount()
 
         # Assert that total_payable_amount is a float
         self.assertIsInstance(total_payable_amount, float)

@@ -12,20 +12,30 @@ class Checkout:
         self.cart = cart
         self.region = region
 
-    def do_checkout(self):
-        cart_data = self.cart.get_cart_items_data()
-        return {
-            "cart_data": cart_data,
-            "total_payable_amount (including tax)": self.calculate_total_payable()
-        }
+        if not isinstance(self.region, str):
+            raise ValueError("Region must be a string.")
 
-    def calculate_total_payable(self) -> float:
+    def do_checkout(self):
+        try:
+            cart_data = self.cart.get_cart_items_data()
+            total_payable_amount = self.get_total_payable_amount()
+            return {
+                "cart_data": cart_data,
+                "total_payable_amount (including tax)": total_payable_amount
+            }
+        except (ValueError, KeyError) as e:
+            raise Exception(f"Checkout error: {e}")
+
+    def get_total_payable_amount(self) -> float:
         """
         Calculates the total price of all items in the cart using the Cart object.
         """
         total_cart_value = self.cart.get_total_price()
-        tax_payable_on_cart_items = self.tax_payable(total_cart_value)
-        return total_cart_value + tax_payable_on_cart_items
+        try:
+            tax_payable_on_cart_items = self.tax_payable(total_cart_value) * total_cart_value
+            return total_cart_value + tax_payable_on_cart_items
+        except Exception as e:
+            raise Exception(f"Failed to calculate total payable amount.{e}")
 
     def tax_payable(self, total_cart_value):
         """
