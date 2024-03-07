@@ -1,7 +1,7 @@
 from checkout.constants import REGION
 
 
-class RegionalTaxRuleFactory:
+class RegionalTaxRuleHelper:
     """
     Mapping to keep tax percent based on region.
     """
