@@ -30,14 +30,23 @@ checkout-app/
 
 **Build and Run the Docker Image:**
 
-   ```bash
-   cd checkout-app
-   ./run.sh
-   ```
-
+```bash
+cd checkout-app
+./run.sh
+```
 This builds a Docker image named `checkout-app` that includes all project dependencies only after successful execution of the unit tests.
 
 The script will prompt you for cart items string like `Enter cart items:` and display the calculated total price in next line.
+
+if you get the error:
+```bash
+   permission denied: ./run.sh
+```
+Run this command before the execution
+```bash
+chmod +x run.sh
+```
+Now try to run the command `./run.sh`
 
 ####Demo:
    ```bash
