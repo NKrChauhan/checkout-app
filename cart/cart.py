@@ -24,6 +24,8 @@ class Cart:
         """
         Adds an item (product) to the cart, optionally specifying quantity.
         """
+        if quantity <= 0:
+            raise ValueError("Quantity must be a positive integer.")
         existing_item = next((item for item in self.items if item.product.name == product.name), None)
         if existing_item:
             existing_item.quantity += quantity
