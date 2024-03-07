@@ -1,6 +1,6 @@
 from cart.cart import Cart
 from checkout.constants import REGION
-from checkout.factories.regional_tax_rule_factory import RegionalTaxRuleFactory
+from checkout.helpers.regional_tax_rule import RegionalTaxRuleHelper
 
 
 class Checkout:
@@ -31,5 +31,5 @@ class Checkout:
         """
         Calculates the tax based on the region.
         """
-        regional_tax_rule_percent = RegionalTaxRuleFactory.get_tax_rule_percent_for_region(self.region)
+        regional_tax_rule_percent = RegionalTaxRuleHelper.get_tax_rule_percent_for_region(self.region)
         return total_cart_value * regional_tax_rule_percent
