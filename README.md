@@ -48,7 +48,7 @@ chmod +x run.sh
 ```
 Now try to run the command `./run.sh`
 
-####Demo:
+#### Demo:
    ```bash
    Enter cart items: DDD
    45.0
